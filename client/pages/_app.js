@@ -7,7 +7,7 @@ import Login from "./user/login";
 import NavLayout from "../components/navigation/navlayout";
 
 function MyApp({ Component, pageProps }) {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
   return (
     <>
       <Provider store={store}>
