@@ -14,11 +14,10 @@ export function RequestHandeler(req = {}) {
 export function RequestRegistration(req = {}) {
   return Object.freeze({
     body: {
-      username: req.body.username,
       email: req.body.email,
       password: req.body.password,
       name: req.body.name,
-      phone: req.body.phone,
+      RoleId:1
     },
     params: req.params,
     url: req.url,
@@ -33,10 +32,8 @@ export function RequestRegistration(req = {}) {
 export function RequestLogin(req = {}) {
   return Object.freeze({
     body: {
-      username: req.body.username,
       email: req.body.username,
       password: req.body.password,
-      phone: req.body.username,
     },
     params: req.params,
     url: req.url,

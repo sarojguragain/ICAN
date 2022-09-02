@@ -7,7 +7,6 @@ import enVariable from '../../config/config.json'
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = enVariable[env];
-const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
@@ -15,6 +14,7 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
+const db = {};
 
 fs
   .readdirSync(__dirname)
@@ -25,7 +25,7 @@ fs
     db[model.name] = model;
   });
 
-Object.keys(db).forEach(modelName => {
+Object.keys(db).forEach(function(modelName) {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }

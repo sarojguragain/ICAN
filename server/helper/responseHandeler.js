@@ -15,6 +15,14 @@ export function Created (res = {}) {
     });
 }
 
+export function CreateError (res = {}) {
+    return Object.freeze({
+        success:true,
+        status:201,
+        message:"Unable to create data ",
+        error:res.message
+    });
+}
 export function Login (res = {}) {
     return Object.freeze({
         success:true,

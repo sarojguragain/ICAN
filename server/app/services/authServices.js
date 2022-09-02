@@ -12,22 +12,21 @@ import {
 import tokenGenerator from "../../helper/tokenGenerator";
 
 const User = models.User;
+const Role = models.Role;
 const Op = sequelize.Op;
 
 class authService {
   constructor() {}
   async login(req) {
     try {
-      const { username, password, email } = req.body;
-      let user = await User.findOne({
-        where: { email: email } || { username: username },
-      });
+      const { password, email } = req.body;
+      let user = await User.findOne({where: { email: email },include: Role});
+      console.log('USER',JSON.stringify(user, null, 2));
       if (!user) return NotFound();
       else {
         var passwordIsValid = await bcrypt.compare(password, user.password);
         if (!passwordIsValid) return InvalidLogin();
         else {
-          // const token = await generateAccessToken(username || email )
           var token = tokenGenerator(user);
           user.token = token;
           return Login(user);
@@ -39,15 +38,14 @@ class authService {
   }
 
   async registration(req) {
-    console.log("SERVICE REQUEST", req);
     try {
       let checkdata = await User.findOne({ where: { email: req.body.email } });
       if (checkdata) return AleradyExist(checkdata);
       else {
         req.body.password = bcrypt.hashSync(req.body.password, 8);
         let createdata = await User.create(req.body);
-        if (createdata) {
-          return Created(createdata);
+        if (UserRole) {
+          return Created(createdata); 
         }
       }
     } catch (err) {

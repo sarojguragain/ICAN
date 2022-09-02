@@ -1,44 +1,27 @@
 'use strict';
-import { Sequelize, DataTypes, Model } from 'Sequelize';
-
-export default(sequelize, DataTypes) => {
-  class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
+export default (sequelize, DataTypes)=> {
+  var User = sequelize.define('User', {
+    name:{
+      type: DataTypes.STRING,
+      default:"Ican User"
+    },
+    email:{
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique:true
+    },  
+    password:{
+      type:DataTypes.STRING,
+      allowNull:false,
+    },
+    status:{
+     type:DataTypes.BOOLEAN,
+     default:1 
     }
-  }
-  User.init({
-    name: {
-     type: DataTypes.STRING,
-     allowNull: true
-   },
-   username: {
-     type:DataTypes.STRING,
-     allowNull:false,
-     unique:true
-   },
-   email:{
-     type:DataTypes.STRING,
-     allowNull:true,
-     unique:true
-   },
-   phone:{
-     type:DataTypes.STRING,
-     allowNull:true,
-     unique:true
-   },
-   password: {
-     type:DataTypes.STRING,
-     allowNull:false,
-   }
- }, {
-   sequelize,
-   modelName: 'User',
- });
- return User;
+  });
+
+  User.associate = function(models) {
+    User.belongsTo(models.Role);
+  };
+  return User;
 };
