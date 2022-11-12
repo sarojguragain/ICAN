@@ -1,21 +1,17 @@
 import React from "react";
 import TextInput from "../../components/control/text-input";
-import { Row, Col, Card, Button, Checkbox, Form, Input } from "antd";
+import { Row, Col, Card, Button, Checkbox, Form, Input, message } from "antd";
 import { useDispatch } from "react-redux";
-import { login,UserRegistration } from "../../redux/user/action";
+import { login, UserRegistration } from "../../redux/user/action";
 
 const Registration = () => {
   const dispatch = useDispatch();
-
-
-
-
   const onFinish = (values) => {
-    dispatch(UserRegistration(values));      
+    dispatch(UserRegistration(values));
   };
 
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  message.error( errorInfo);
   };
   return (
     <>
@@ -66,7 +62,7 @@ const Registration = () => {
                   },
                 ]}
               >
-                <Input placeholder="Username"  />
+                <Input placeholder="Username" />
               </Form.Item>
               <Form.Item
                 label="Email"
@@ -78,9 +74,8 @@ const Registration = () => {
                   },
                 ]}
               >
-                <Input  placeholder="Email" />
-              </Form.Item> 
-
+                <Input placeholder="Email" />
+              </Form.Item>
 
               <Form.Item
                 name="password"
@@ -93,9 +88,8 @@ const Registration = () => {
                 ]}
                 hasFeedback
               >
-                <Input.Password  placeholder="Password"  />
+                <Input.Password placeholder="Password" />
               </Form.Item>
-
 
               <Form.Item
                 name="confirm"
@@ -121,9 +115,8 @@ const Registration = () => {
                   }),
                 ]}
               >
-                <Input.Password  placeholder="Conform Password"   />
+                <Input.Password placeholder="Conform Password" />
               </Form.Item>
-
 
               <Form.Item
                 name="agreement"
@@ -141,7 +134,6 @@ const Registration = () => {
                   I have read the <a href="">agreement</a>
                 </Checkbox>
               </Form.Item>
-
 
               <Form.Item
                 wrapperCol={{

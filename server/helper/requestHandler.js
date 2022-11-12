@@ -17,7 +17,7 @@ export function RequestRegistration(req = {}) {
       email: req.body.email,
       password: req.body.password,
       name: req.body.name,
-      RoleId:1
+      RoleId:req.body.RoleId
     },
     params: req.params,
     url: req.url,
@@ -34,6 +34,7 @@ export function RequestLogin(req = {}) {
     body: {
       email: req.body.username,
       password: req.body.password,
+      remember:req.body.remember
     },
     params: req.params,
     url: req.url,

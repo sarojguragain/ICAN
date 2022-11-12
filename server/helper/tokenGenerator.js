@@ -1,9 +1,18 @@
 import jwt from 'jsonwebtoken';
 
-
-const  tokenGenerator =(data)=>{
-    const token = jwt.sign({username:data.username, email:data.email, role:data.role},"ICANWetwebtokensecret",{ expiresIn: "2h" });
-    console.log("TOKEN",token)
+const jwtSecret = process.env.JWTSECRET;
+//jwt token Generate
+export const  tokenGenerator =(data)=>{
+  console.log("jwtSecret",jwtSecret)
+    var user =  JSON.parse(JSON.stringify(data))
+    const token = jwt.sign({email:user.email}, jwtSecret, {
+        expiresIn: 86400 * 30
+    });
     return token;
 }
-export default tokenGenerator;
+
+//jwt token verification
+export const tokenVerify=(token)=>{
+  const data =  jwt.verify(token, jwtSecret);
+  return data;
+}

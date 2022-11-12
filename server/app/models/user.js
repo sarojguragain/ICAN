@@ -18,6 +18,9 @@ export default (sequelize, DataTypes)=> {
      type:DataTypes.BOOLEAN,
      default:1 
     }
+  },{
+    deletedAt:'deletedAt',
+    paranoid: true,
   });
 
   User.associate = function(models) {

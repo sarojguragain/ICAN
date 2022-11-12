@@ -1,53 +1,86 @@
 import { actionTypes } from "./type";
 
 var initialState = {
-    login: {
-        LoginId:'',
-        password:'',
-        isSuperAdmin:true,
-    },
-    users:[],
-    loginSuccess: false,
-    changePassword:{LoginId:'Test'},
-    profile:{
-        userId: '',
-        userName: '',
-       
-     },
-    isSuccess:false,
-    token:'',
-    authentication:false,
-    message:'',
-    error:false,
-    success:false
+  users: [],
+  user:{},
+  isSuccess: false,
+  Roles:[],
+  message: "",
+  error: false,
+  success: false,
+  isOpen: false,
+  isAddUser:false,
+  EditableId: null,
 };
 
-const loginReducer = (state = initialState, action) => {
-    
-   
-    switch (action.type) {          
-            
-        case actionTypes.LOGIN:
-            let obj = {};
-            obj[action.payload.field] = action.payload.value;
-            let login = Object.assign({}, state.login, obj);
-            return { 
-                ...state,
-                login: login,
-                message:'',
-                error:false,
-                success:false
-            };
-            case actionTypes.GET_USERS_SUCCESS:
-                console.log("REDUCER", action.payload)
-           return {
+const userReducer = (state = initialState, action) => {
+  let object={};
+  switch (action.type) {
+    case actionTypes.GET_USERS_SUCCESS:
+      return {
+        ...state,
+        users: action.payload,
+      };
+
+      case actionTypes.GET_ROLES_SUCCESS:
+      return{
+        ...state,
+        Roles:action.payload
+      }
+      case actionTypes.GET_USER_BY_ID_SUCCESS:
+        return {
+          ...state,
+          user:action.payload
+        }
+
+        case actionTypes.EDITABLE_USER:
+          return{
             ...state,
-            users:action.payload
-           }
+            EditableUser:state.users.find(x=>x.id===action.payload),
+            user:state.users.find(x=>x.id===action.payload)
+          }
+        case actionTypes.EDIT_USER:
+          object[action.payload.field]= action.payload.value;
+          return{
+            ...state,
+            user:{
+              ...state.user,
+              ...object
+            }
+          };
+          
+    case actionTypes.OPEN_MODAL:
+      return {
+        ...state,
+        isOpen: true,
+        EditableId: action.payload,
+      };
 
-        default:
-            return state;
-    }
+      case actionTypes.OPEN_ADD_MODAL:
+        return {
+          ...state,
+          isAddUser: true,
+          
+        };
+
+    case actionTypes.CLOSE_MODAL:
+      return {
+        ...state,
+        isOpen: false,
+        EditableId: null,
+        user:{},
+        EditableUser:{}
+      };
+
+      case actionTypes.CLOSE_ADD_MODAL:
+        return{
+          ...state,
+          isAddUser: false,
+
+        }
+    default:
+      return state;
+  }
 };
 
-export default loginReducer;
+export default userReducer;

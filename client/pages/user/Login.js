@@ -1,118 +1,123 @@
-import React from "react";
-import TextInput from "../../components/control/text-input";
-import { Row, Col, Card, Button, Checkbox, Form, Input } from "antd";
-import { useDispatch } from "react-redux";
-import { login } from "../../redux/user/action";
+// import { useEffect, useState } from "react";
 
-const Login = () => {
-const dispatch = useDispatch();
-  const onFinish = (values) => {
-    dispatch(login(values));
-    // console.log("Success:", values);
-  };
+// import { Row, Col, Card, Button, Checkbox, Form, Input, message } from "antd";
+// import { useDispatch, useSelector } from "react-redux";
+// import { useRouter } from "next/router";
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
-  return (
-    <>
-      <Row className="Login_container">
-        <Col
-          xs={{
-            span: 24
-          }}
-          sm={{
-            span: 24,
-          }}
-          md={{
-            span: 12,
-            offset: 6,
-          }}
-          lg={{
-            span: 15,
-            offset: 6,
-          }}
-          xl={{
-            span: 12,
-            offset: 6,
-          }}
-         
-          
-        >
-          <Card
-            title="Admins Login"
-            bordered={true}
-          >
-            <Form
-              name="basic"
-              labelCol={{
-                span: 8,
-              }}
-              wrapperCol={{
-                span: 16,
-              }}
-              initialValues={{
-                remember: true,
-              }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-              autoComplete="off"
-            >
-              <Form.Item
-                label="Username"
-                name="username"
-                placeholder="username / Email"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your username!",
-                  },
-                ]}
-              >
-                <Input placeholder="Username / Email" />
-              </Form.Item>
+// const Login = () => {
+//   const dispatch = useDispatch();
+//   const router = useRouter();
 
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-              >
-                <Input.Password placeholder="Password" />
-              </Form.Item>
+//   const [stop, setStop] = useState(false);
 
-              <Form.Item
-                name="remember"
-                valuePropName="checked"
-                wrapperCol={{
-                  offset: 8,
-                  span: 16,
-                }}
-              >
-                <Checkbox>Remember me</Checkbox>
-              </Form.Item>
+  
+// ;
 
-              <Form.Item
-                wrapperCol={{
-                  offset: 8,
-                  span: 16,
-                }}
-              >
-                <Button type="primary" htmlType="submit">
-                  Login
-                </Button>
-              </Form.Item>
-            </Form>
-          </Card>
-        </Col>
-        
-      </Row>
-    </>
-  );
-};
+//   const onFinish = (values) => {
+//     console.log("ON FINISH");
+//     // dispatch(login(values));
+//   };
 
-export default Login;
+//   const onFinishFailed = (errorInfo) => {
+//     console.log("LOGIN ERROR",errorInfo)
+//     message.error(errorInfo);
+//   };
+
+
+
+//   return (
+//     <>
+//       <Row className="Login_container">
+//         <Col
+//           xs={{
+//             span: 24,
+//           }}
+//           sm={{
+//             span: 24,
+//           }}
+//           md={{
+//             span: 12,
+//             offset: 6,
+//           }}
+//           lg={{
+//             span: 15,
+//             offset: 6,
+//           }}
+//           xl={{
+//             span: 12,
+//             offset: 6,
+//           }}
+//         >
+//           <Card title="Admins Login" bordered={true}>
+//             <Form
+//               name="basic"
+//               labelCol={{
+//                 span: 8,
+//               }}
+//               wrapperCol={{
+//                 span: 16,
+//               }}
+//               initialValues={{
+//                 remember: true,
+//               }}
+//               onFinish={onFinish}
+//               onFinishFailed={onFinishFailed}
+//               autoComplete="off"
+//             >
+//               <Form.Item
+//                 label="Username"
+//                 name="username"
+//                 placeholder="username / Email"
+//                 rules={[
+//                   {
+//                     required: true,
+//                     message: "Please input your username!",
+//                   },
+//                 ]}
+//               >
+//                 <Input placeholder="Username / Email" />
+//               </Form.Item>
+
+//               <Form.Item
+//                 label="Password"
+//                 name="password"
+//                 rules={[
+//                   {
+//                     required: true,
+//                     message: "Please input your password!",
+//                   },
+//                 ]}
+//               >
+//                 <Input.Password placeholder="Password" />
+//               </Form.Item>
+
+//               <Form.Item
+//                 name="remember"
+//                 valuePropName="checked"
+//                 wrapperCol={{
+//                   offset: 8,
+//                   span: 16,
+//                 }}
+//               >
+//                 <Checkbox>Remember me</Checkbox>
+//               </Form.Item>
+
+//               <Form.Item
+//                 wrapperCol={{
+//                   offset: 8,
+//                   span: 16,
+//                 }}
+//               >
+//                 <Button type="primary" htmlType="submit">
+//                   Login
+//                 </Button>
+//               </Form.Item>
+//             </Form>
+//           </Card>
+//         </Col>
+//       </Row>
+//     </>
+//   );
+// };
+
+// export default Login;

@@ -3,7 +3,13 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import AuthRoute from './routes/auth.js'
 import cors from'cors';
-
+import passport from "passport";
+import passportConfig from './config/passport.js';
+import MenuRoute from './routes/menu.js';
+import RoleRoute from'./routes/roles.js';
+import UserRoute from './routes/user.js';
+import PageRoute from './routes/pages.js';
+passportConfig(passport);
 
 const app = express();
 // const dotenv= dotenv();
@@ -22,10 +28,18 @@ app.all('*', function(req, res, next) {
 app.use(bodyParser.json({limit: '100mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb','extended': 'true'}));
 app.use(bodyParser.json({type: 'application/vnd.api+json'}));
+app.use(passport.initialize());
 
 //Routes
-
 app.use('/api',AuthRoute);
+app.use('/api',MenuRoute);
+app.use('/api',RoleRoute);
+app.use('/api',UserRoute);
+app.use('/api',PageRoute);
 
 // End of Routes
+
+
+
+
 export default app;

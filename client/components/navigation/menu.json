@@ -1,0 +1,419 @@
+{
+    "menu": [
+      {
+        "id": 1,
+        "title": "Dashboard",
+        "tooltip": "dashboard",
+        "url": "/home",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 1,
+        "ModuleId": 1
+      },
+      {
+        "id": 2,
+        "title": "User List",
+        "tooltip": "user-list",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 2,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 3,
+            "title": "All User List",
+            "tooltip": "all-user-list",
+            "url": "/user/all-user-list",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 2,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          }
+        ]
+      },
+      
+      {
+        "id": 4,
+        "title": "User Group",
+        "tooltip": "user-group",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 3,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 5,
+            "title": "User Group",
+            "tooltip": "user-group",
+            "url": "/user-group/user-group",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 4,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 6,
+            "title": "User Role",
+            "tooltip": "role",
+            "url": "/user-group/role-access",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 4,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          },
+          {
+            "id": 7,
+            "title": "Page Access",
+            "tooltip": "page-access",
+            "url": "/user-group/page-access",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 4,
+            "status": "true",
+            "level": 2,
+            "orderNo": 3,
+            "ModuleId": 1
+          },
+          {
+            "id": 8,
+            "title": "Content Access",
+            "tooltip": "content-access",
+            "url": "/user-group/content-access",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 4,
+            "status": "true",
+            "level": 2,
+            "orderNo": 4,
+            "ModuleId": 1
+          }
+        ]
+      },
+     
+      {
+        "id": 8,
+        "title": "Pages ",
+        "tooltip": "Pages",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 4,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 9,
+            "title": "All Pages",
+            "tooltip": "all-pages",
+            "url": "/pages/all-pages",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 8,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 10,
+            "title": "Add Pages",
+            "tooltip": "add-pages",
+            "url": "/pages/add-pages",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 8,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "title": "Contents",
+        "tooltip": "contents",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 5,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 12,
+            "title": "All Contents",
+            "tooltip": "all-contents",
+            "url": "/contents/all-contents",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 11,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 13,
+            "title": "Add Contents",
+            "tooltip": "Add-contents",
+            "url": "/contents/add-contents",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 11,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          },
+          {
+            "id": 14,
+            "title": "All Category",
+            "tooltip": "all-category",
+            "url": "/contents/all-category",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 11,
+            "status": "true",
+            "level": 2,
+            "orderNo": 3,
+            "ModuleId": 1
+          },
+          {
+            "id": 15,
+            "title": "Add Category",
+            "tooltip": "add-category",
+            "url": "/contents/add-category",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 11,
+            "status": "true",
+            "level": 2,
+            "orderNo": 4,
+            "ModuleId": 1
+          }
+        ]
+      }
+      ,
+      {
+        "id": 16,
+        "title": "Slider",
+        "tooltip": "slider",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 6,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 17,
+            "title": "All Slider",
+            "tooltip": "all-slider",
+            "url": "/slider/all-slider",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 16,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 18,
+            "title": "Add Slider",
+            "tooltip": "add-slider",
+            "url": "/slider/add-slider",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 16,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          }
+        ]
+      },
+  
+      {
+        "id": 19,
+        "title": "Staff",
+        "tooltip": "staff",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 7,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 20,
+            "title": "All Staff",
+            "tooltip": "all-staff",
+            "url": "/staff/all-staff",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 19,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 21,
+            "title": "Add Staff",
+            "tooltip": "add-staff",
+            "url": "/staff/add-staff",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 19,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          }
+        ]
+      },
+     
+      {
+        "id": 22,
+        "title": "Photo Gallary",
+        "tooltip": "photo-gallary",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 8,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 23,
+            "title": "All Photo",
+            "tooltip": "all-photo",
+            "url": "/photo-gallary/all-photo",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 22,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 24,
+            "title": "Add Photo",
+            "tooltip": "add-photo",
+            "url": "/photo/add-photo",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 22,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          }
+        ]
+      },
+      
+      {
+        "id": 25,
+        "title": "Setting",
+        "tooltip": "setting",
+        "url":"",
+        "color": "black",
+        "icon": "PieChartOutlined",
+        "type": 0,
+        "parntId": null,
+        "status": "true",
+        "level": 1,
+        "orderNo": 9,
+        "ModuleId": 1,
+        "children":[
+          {
+            "id": 26,
+            "title": "View Contact",
+            "tooltip": "view-contact",
+            "url": "/setting/view-contact",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 25,
+            "status": "true",
+            "level": 2,
+            "orderNo": 1,
+            "ModuleId": 1
+          },
+          {
+            "id": 27,
+            "title": "Add Contact",
+            "tooltip": "add-contact",
+            "url": "/setting/add-contact",
+            "color": "black",
+            "icon": "PieChartOutlined",
+            "type": 1,
+            "parntId": 25,
+            "status": "true",
+            "level": 2,
+            "orderNo": 2,
+            "ModuleId": 1
+          }
+        ]
+      }
+    
+    ]
+  }

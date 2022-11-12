@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  server:
+    build: ./server
+    container_name: server
+    ports:
+      - '5000:5000'
+    volumes:
+      - ./server:/app
+      - ./ICAN/node_modules

@@ -1,13 +1,10 @@
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from '@ant-design/icons';
-import { Layout, Menu } from 'antd';
-import React, { useState } from 'react';
+import { Layout, Menu } from "antd";
+import Link from "next/link";
+import React, { useState } from "react";
 const { Header, Content, Footer, Sider } = Layout;
+import menu from "./menu.json";
+
+const { SubMenu } = Menu;
 
 function getItem(label, key, icon, children) {
   return {
@@ -17,28 +14,76 @@ function getItem(label, key, icon, children) {
     label,
   };
 }
-const items = [
-  getItem('Option 1', '1', <PieChartOutlined />),
-  getItem('Option 2', '2', <DesktopOutlined />),
-  getItem('User', 'sub1', <UserOutlined />, [
-    getItem('Tom', '3'),
-    getItem('Bill', '4'),
-    getItem('Alex', '5'),
-  ]),
-  getItem('Team', 'sub2', <TeamOutlined />, [getItem('Team 1', '6'), getItem('Team 2', '8')]),
-  getItem('Files', '9', <FileOutlined />),
-];
 
-
-const SideBar = () => {
+const SideBar = (props) => {
   const [collapsed, setCollapsed] = useState(false);
+  const [openKeys, setOpenKeys] = useState(["sub1"]);
+  const menus = menu.menu;
 
+  const onCollapse = () => {
+    setCollapsed(!collapsed);
+  };
+
+  const onOpenChange = (keys) => {
+    const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
+    if (menus.map((x) => x.title).indexOf(latestOpenKey) === -1) {
+      setOpenKeys(keys);
+    } else {
+      setOpenKeys(latestOpenKey ? [latestOpenKey] : []);
+    }
+  };
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={value => setCollapsed(value)}>
-        <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items} />
-      </Sider>
-  )
-}
+    <>
+      <Sider
+      className="sidebar"
+        collapsible
+        collapsed={collapsed}
+        onCollapse={(value) => setCollapsed(value)}
+      >
+        <Menu
+          defaultSelectedKeys={["1"]}
+          mode="inline"
+          theme="dark"
+          openKeys={openKeys}
+          onOpenChange={onOpenChange}
+        >
+          {!!menus &&
+            menus.map((men, i) => {
+              if (!men.children) {
+                return (
+                  <Menu.Item
+                    key={men.title}
+                    // icon={<Icon type={men.icon} />}
+                    className="menu-item"
+                  >
+                    <Link href={men.url}>{men.title}</Link>
+                  </Menu.Item>
+                );
+              }
 
-export default SideBar
+              if (men.children) {
+                return (
+                  <SubMenu
+                    key={men.title}
+                    title={men.title}
+                    // icon={<Icon type={men.icon} />}
+                    className="menu-item"
+                  >
+                    {men.children.map((item, i) => {
+                      return (
+                        <Menu.Item key={item.title} className="menu-item">
+                          <Link href={item.url}>{item.title}</Link>
+                        </Menu.Item>
+                      );
+                    })}
+                  </SubMenu>
+                );
+              }
+            })}
+        </Menu>
+      </Sider>
+    </>
+  );
+};
+
+export default SideBar;

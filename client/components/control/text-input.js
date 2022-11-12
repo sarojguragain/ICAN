@@ -1,35 +1,72 @@
-import React from "react";
+import { Input, Form } from "antd";
+import React, { useState,useEffect } from "react";
+import { debounce } from "lodash";
+import { useCallback } from "react";
+import { useDispatch } from "react-redux";
 
-const TextInput = (Props) => {
-    const {name, label, required, type,disabled,placeholder,value, message,onChanged,} = Props; 
+const TextInput = ({
+  required,
+  name,
+  message,
+  label,
+  value,
+  index,
+  subIndex,
+  elIndex,
+  shouldUpdate,
+  addonBefore,
+  form,
+  type,
+  ...props
+}) => {
+  const dispatch = useDispatch();
+  const [val, setVal] = useState(value || '');
+  const debouncedSave = useCallback(
+    debounce((KeyValue) => dispatch(props.onChange(KeyValue)), 1000),
+    []
+  );
+  console.log("VALUE",value)
+  console.log("VAL",val)
+  const validateMessages = {
+    required: "${label} is required!",
+    types: {
+      email: "${label} is not a valid email!",
+      number: "${label} is not a valid number!",
+    },
+    number: {
+      range: "${label} must be between ${min} and ${max}",
+    }
+  };
+  
+
+  const onChange = (event) => {
+    setVal(event.target.value);
+    const keyValue = {
+      field: name,
+      value: event.target.value,
+    };
+    debouncedSave(keyValue);
+  };
+  useEffect(() => {
+    setVal(value)
+    form.setFieldsValue(value)
+}, [value]);
   return (
-    <div className="form-group mb-6">
-      <label
-        className="form-label inline-block mb-2 text-gray-700"
+    <>
+      <Form.Item
+        label={label}
+        name={name}
+       initialValue={val||''}
+        rules={[
+          { required: required, message: message },
+          {
+            type: type,
+          },
+        ]}
       >
-       {label}
-      </label>
-      <input
-        type={type}
-        className="form-control
-                block
-                w-full
-                px-3
-                py-1.5
-                text-base
-                font-normal
-                text-gray-700
-                bg-white bg-clip-padding
-                border border-solid border-gray-300
-                rounded
-                transition
-                ease-in-out
-                m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        placeholder={placeholder}
-        required={required}
-      />
-    </div>
+        <Input {...props}  onChange={onChange} />
+      </Form.Item>
+    </>
   );
 };
 

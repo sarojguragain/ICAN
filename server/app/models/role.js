@@ -14,6 +14,9 @@ export default (sequelize, DataTypes)=> {
       type:DataTypes.BOOLEAN,
       default:1 
      }
+  },{
+    deletedAt:'deletedAt',
+    paranoid: true,
   });
   Role.associate = function (models) {
     Role.hasMany(models.User);
